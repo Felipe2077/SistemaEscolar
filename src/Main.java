@@ -17,7 +17,7 @@ public class Main {
 
       for (int i = 0; i < 2; i++) {
 
-         String nome = JOptionPane.showInputDialog("Digite o nome do aluno "+i+":");
+         String nome = JOptionPane.showInputDialog("Digite o nome do aluno " + i + ":");
 //         String idade = JOptionPane.showInputDialog("Digite a idade:");
 //         String cpf = JOptionPane.showInputDialog("Digite o CPF:");
 //         String serie = JOptionPane.showInputDialog("Digite a serie atual:");
@@ -41,12 +41,11 @@ public class Main {
             for (int j = 0; j < disciplina1.getNota().length; j++) {
                String nota = JOptionPane.showInputDialog("Digite a nota: " + (j + 1));
                disciplina1.getNota()[j] = Double.parseDouble(nota);
-
             }
 
             aluno1.getDisciplinas().add(disciplina1);
             escolha = JOptionPane.showConfirmDialog(null, "deseja cadastrar outra disciplina?");
-         }while (escolha ==0);
+         } while (escolha == 0);
 
          alunos.add(aluno1);
 
@@ -55,16 +54,13 @@ public class Main {
                System.out.println("A nota " + (j + 1) + " é: " + disciplinaAtual.getNota()[j]);
             }
          }
-
          System.out.println("Media: " + aluno1.getDisciplinas());
          System.out.println("Status do aluno: " + aluno1.statusLetivo());
-
       }
 
       //*------------------------------Escrever no arquivo------------------------------*/
 
       int escolha = JOptionPane.showConfirmDialog(null, "deseja gerar o relatório de alunos?");
-
       if (escolha == 0) {
 
          File arquivo = new File("/home/felipe-cpd/Documentos/SistemaEscolar/src/Alunos.csv");
@@ -78,11 +74,10 @@ public class Main {
 
          for (Aluno aluno : alunos) {
 
-
             for (Disciplina disciplinaAtual : aluno.getDisciplinas()) {
                for (int j = 0; j < disciplinaAtual.getNota().length; j++) {
 
-                  escrever_no_arquivo.write(aluno.getNome() + ";"+disciplinaAtual.getNomeDaDisciplina() +";"+"nota "+(j+1)+ ";"+disciplinaAtual.getNota()[j]+"\n");
+                  escrever_no_arquivo.write(aluno.getNome() + ";" + disciplinaAtual.getNomeDaDisciplina() + ";" + "nota " + (j + 1) + ";" + disciplinaAtual.getNota()[j] + "\n");
 
                }
             }
@@ -90,7 +85,6 @@ public class Main {
 
          escrever_no_arquivo.flush();
          escrever_no_arquivo.close();
-
          JOptionPane.showMessageDialog(null, "relatório gerado com sucesso!");
       }
 
